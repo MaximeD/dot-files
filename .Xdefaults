@@ -1,0 +1,60 @@
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!  urxvt
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+urxvt*background:		#000000
+urxvt*foreground:		#ffffff
+urxvt*inheritPixmap:	    	true
+urxvt*transparent:		true
+urxvt*shading:			30
+urxvt*fading:			10
+urxvt*tintColor:	        #ffffff
+urxvt*color0:			rgb:60/60/60
+
+urxvt*font:			xft:dejavu sans mono:pixelsize=11:antialias=true
+URxvt*boldFont:                 xft:dejavu Sans Mono:pixelsize=11:antialias=true:bold:hinting=true
+URxvt*italicFont:            	xft:dejavu Sans Mono:pixelsize=11:antialias=true:italic:autohint=true:hinting=true
+URxvt*bolditalicFont:          	xft:dejavu Vera Sans Mono:pixelsize=11:antialias=true:bold:italic:autohint=true:hinting=true
+urxvt*scrollBar:            	false
+urxvt*visualBell:      		true
+urxvt*cursorBlink:      	true
+urxvt*cursorUnderline:  	true
+urxvt*saveLines:           	2000
+urxvt*secondaryScroll: 		true
+urxvt*perl-ext-common: 		default,matcher,selection-popup,option-popup,searchable-scrollback<M-s>,readline
+urxvt*urlLauncher:		/usr/bin/firefox
+urxvt*matcher.button: 		1
+urxvt*termName:			rxvt
+
+! changer la tailles des fontes on the fly
+! :Bind C-0, C-+ and C-= to activate small, medium, and big font size resp.     
+URxvt.keysym.C-0: command:\033]710;xft:dejavu sans mono:pixelsize=10:antialias=true
+URxvt.keysym.C-minus: command:\033]710;xft:dejavu sans mono:pixelsize=11:antialias=true
+URxvt.keysym.C-equal: command:\033]710;xft:dejavu sans mono:pixelsize=14:antialias=true
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!  emacs
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!emacs.font: -adobe-courier-medium-r-normal--14-100-100-100-m-90-iso8859-15
+
+NetHack*font:                   vga
+
+NetHack*background:             black
+NetHack*foreground:             grey
+
+NetHack*map*background:         black
+
+NetHack*map*black:              grey25
+NetHack*map*red:                red3
+NetHack*map*green:              green3
+NetHack*map*brown:              DarkOrange3
+NetHack*map*blue:               blue3
+NetHack*map*magenta:            magenta3
+NetHack*map*cyan:               cyan3
+NetHack*map*gray:               gray70
+NetHack*map*orange:             yellow
+NetHack*map*bright_green:       green
+NetHack*map*yellow:             yellow
+NetHack*map*bright_blue:        blue
+NetHack*map*bright_magenta:     magenta
+NetHack*map*bright_cyan:        cyan
+NetHack*map*white:              white
