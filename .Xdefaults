@@ -8,11 +8,10 @@ urxvt*transparent:		true
 urxvt*shading:			30
 urxvt*fading:			10
 urxvt*tintColor:	        #ffffff
-urxvt*color0:			rgb:60/60/60
 
-urxvt*font:			xft:dejavu sans mono:pixelsize=11:antialias=true
-URxvt*boldFont:                 xft:dejavu Sans Mono:pixelsize=11:antialias=true:bold:hinting=true
-URxvt*italicFont:            	xft:dejavu Sans Mono:pixelsize=11:antialias=true:italic:autohint=true:hinting=true
+urxvt*font:			xft:dejavu sans mono:pixelsize=12:antialias=true
+URxvt*boldFont:                 xft:dejavu Sans Mono:pixelsize=12:antialias=true:bold:hinting=true
+URxvt*italicFont:            	xft:dejavu Sans Mono:pixelsize=12:antialias=true:italic:autohint=true:hinting=true
 URxvt*bolditalicFont:          	xft:dejavu Vera Sans Mono:pixelsize=11:antialias=true:bold:italic:autohint=true:hinting=true
 urxvt*scrollBar:            	false
 urxvt*visualBell:      		true
@@ -35,6 +34,11 @@ URxvt.keysym.C-equal: command:\033]710;xft:dejavu sans mono:pixelsize=14:antiali
 !!  emacs
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !emacs.font: -adobe-courier-medium-r-normal--14-100-100-100-m-90-iso8859-15
+emacs*depth: 32
+!emacs*background:Black
+!emacs*foreground:White
+emacs*transparent:true
+emacs*shading:35
 
 NetHack*font:                   vga
 
