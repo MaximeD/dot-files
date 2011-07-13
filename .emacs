@@ -5,10 +5,42 @@
 (setq color-theme-load-all-themes nil)
 
 (require 'color-theme-tangotango)
-(color-theme-tangotango)
+;; select theme - first list element is for windowing system, second is for console/terminal
+;; Source : http://www.emacswiki.org/emacs/ColorTheme#toc9
+(setq color-theme-choices 
+      '(color-theme-tangotango color-theme-tangotango))
 
+;; default-start
+(funcall (lambda (cols)
+    	   (let ((color-theme-is-global nil))
+    	     (eval 
+    	      (append '(if (window-system))
+    		      (mapcar (lambda (x) (cons x nil)) 
+    			      cols)))))
+    	 color-theme-choices)
+
+;; test for each additional frame or console
+(require 'cl)
+(fset 'test-win-sys 
+      (funcall (lambda (cols)
+    		 (lexical-let ((cols cols))
+    		   (lambda (frame)
+    		     (let ((color-theme-is-global nil))
+		       ;; must be current for local ctheme
+		       (select-frame frame)
+		       ;; test winsystem
+		       (eval 
+			(append '(if (window-system frame)) 
+				(mapcar (lambda (x) (cons x nil)) 
+					cols)))))))
+    	       color-theme-choices ))
+;; hook on after-make-frame-functions
+(add-hook 'after-make-frame-functions 'test-win-sys)
+
+(color-theme-tangotango)
  
 (global-hl-line-mode 1)
+(set-background-color "#2e3434")
 (set-face-background 'hl-line "#330") 
 (setq linum-format "%d ") ;; ajoute un espace pour la numérotation des lignes
 
@@ -32,10 +64,7 @@
 	   (lambda ()
 	     (add-to-list 'TeX-command-list
 			  (list "Clean" "rm %s.log %s.aux %s.out %s.idx"
-				'TeX-run-command nil t))
-	     )
-	   )
-	  )
+				'TeX-run-command nil t)))))
 
 (add-hook 'reftex-load-hook 'imenu-add-menubar-index)
 (add-hook 'reftex-mode-hook 'imenu-add-menubar-index)
