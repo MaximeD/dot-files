@@ -148,6 +148,9 @@
 ;; fichiers lisp persos
 (add-to-list 'load-path "~/.emacs.d/site-lisp/") ; ne marche pas
 
+;; lancer le conf-mode pour tous les fichiers de /etc/
+(add-to-list 'auto-mode-alist '("/etc/*" . conf-mode))
+
 ;; pas d'autosave (ces fichus ~)
 (setq make-backup-files nil) 
 
