@@ -1,18 +1,44 @@
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-!!  urxvt
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!
+!!  urxvt   !!
+!!!!!!!!!!!!!!
+
+urxvt*font:			xft:DejaVu Sans Mono:style=Book:pixelsize=14:antialias=true
+urxvt*boldFont:                 xft:dejavu Sans Mono:pixelsize=14:antialias=true:bold:hinting=true
+urxvt*italicFont:            	xft:dejavu Sans Mono:pixelsize=14:antialias=true:italic:autohint=true:hinting=true
+urxvt*bolditalicFont:          	xft:dejavu Sans Mono:pixelsize=14:antialias=true:bold:italic:autohint=true:hinting=true
+
 urxvt*background:		#000000
 urxvt*foreground:		#ffffff
+
 urxvt*inheritPixmap:	    	true
 urxvt*transparent:		true
-urxvt*shading:			30
-urxvt*fading:			10
+urxvt*shading:			15
 urxvt*tintColor:	        #ffffff
 
-urxvt*font:			xft:dejavu sans mono:pixelsize=12:antialias=true
-URxvt*boldFont:                 xft:dejavu Sans Mono:pixelsize=12:antialias=true:bold:hinting=true
-URxvt*italicFont:            	xft:dejavu Sans Mono:pixelsize=12:antialias=true:italic:autohint=true:hinting=true
-URxvt*bolditalicFont:          	xft:dejavu Vera Sans Mono:pixelsize=11:antialias=true:bold:italic:autohint=true:hinting=true
+! Tango like color theme
+URxvt.foreground: #C8C8C8
+URxvt.background: #323232
+URxvt.color0:  	  #2E3436
+URxvt.color1: 	  #CC0000
+URxvt.color2: 	  #4E9A06
+URxvt.color3: 	  #C4A000
+URxvt.color4:	  #3465A4
+URxvt.color5:	  #75507B
+URxvt.color6: 	  #06989A
+URxvt.color7: 	  #D3D7CF
+URxvt.color8: 	  #555753
+URxvt.color9: 	  #EF2929
+URxvt.color10: 	  #8AE234
+URxvt.color11: 	  #FCE94F
+URxvt.color12: 	  #729FCF
+URxvt.color13: 	  #AD7FA8
+URxvt.color14: 	  #34E2E2
+URxvt.color15: 	  #EEEEEC
+
+URxvt.scrollTtyOutput:   false
+URxvt.scrollWithBuffer:  true
+URxvt.scrollTtyKeypress: true
+
 urxvt*scrollBar:            	false
 urxvt*visualBell:      		true
 urxvt*cursorBlink:      	true
@@ -22,23 +48,20 @@ urxvt*secondaryScroll: 		true
 urxvt*perl-ext-common: 		default,matcher,selection-popup,option-popup,searchable-scrollback<M-s>,readline
 urxvt*urlLauncher:		/usr/bin/firefox
 urxvt*matcher.button: 		1
-urxvt*termName:			rxvt
 
-! changer la tailles des fontes on the fly
-! :Bind C-0, C-+ and C-= to activate small, medium, and big font size resp.     
-URxvt.keysym.C-0: command:\033]710;xft:dejavu sans mono:pixelsize=10:antialias=true
-URxvt.keysym.C-minus: command:\033]710;xft:dejavu sans mono:pixelsize=11:antialias=true
-URxvt.keysym.C-equal: command:\033]710;xft:dejavu sans mono:pixelsize=14:antialias=true
 
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-!!  emacs
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-!emacs.font: -adobe-courier-medium-r-normal--14-100-100-100-m-90-iso8859-15
+!!!!!!!!!
+! emacs !
+!!!!!!!!!
+
 emacs*depth: 32
-!emacs*background:Black
-!emacs*foreground:White
 emacs*transparent:true
 emacs*shading:35
+
+
+!!!!!!!!!!!
+! nethack !
+!!!!!!!!!!!
 
 NetHack*font:                   vga
 
