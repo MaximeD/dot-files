@@ -2,18 +2,18 @@
 !!  urxvt   !!
 !!!!!!!!!!!!!!
 
-urxvt*font:			xft:DejaVu Sans Mono:style=Book:pixelsize=14:antialias=true
-urxvt*boldFont:                 xft:dejavu Sans Mono:pixelsize=14:antialias=true:bold:hinting=true
-urxvt*italicFont:            	xft:dejavu Sans Mono:pixelsize=14:antialias=true:italic:autohint=true:hinting=true
-urxvt*bolditalicFont:          	xft:dejavu Sans Mono:pixelsize=14:antialias=true:bold:italic:autohint=true:hinting=true
+urxvt*font:			       xft:DejaVu Sans Mono:style=Book:pixelsize=15:antialias=true:hinting=true
+urxvt*boldFont:        xft:dejavu Sans Mono:style=Book:pixelsize=15:antialias=true:bold:hinting=true
+urxvt*italicFont:      xft:dejavu Sans Mono:style=Book:pixelsize=15:antialias=true:italic:autohint=true:hinting=true
+urxvt*bolditalicFont:  xft:dejavu Sans Mono:style=Book:pixelsize=15:antialias=true:bold:italic:autohint=true:hinting=true
 
-urxvt*background:		#000000
-urxvt*foreground:		#ffffff
+urxvt*background:		  #000000
+urxvt*foreground:		  #ffffff
 
-urxvt*inheritPixmap:	    	true
+urxvt*inheritPixmap:  true
 urxvt*transparent:		true
-urxvt*shading:			15
-urxvt*tintColor:	        #ffffff
+urxvt*shading:			  15
+urxvt*tintColor:	    #ffffff
 
 ! Tango like color theme
 URxvt.foreground: #C8C8C8
@@ -22,8 +22,8 @@ URxvt.color0:  	  #2E3436
 URxvt.color1: 	  #CC0000
 URxvt.color2: 	  #4E9A06
 URxvt.color3: 	  #C4A000
-URxvt.color4:	  #3465A4
-URxvt.color5:	  #75507B
+URxvt.color4:	    #3465A4
+URxvt.color5:	    #75507B
 URxvt.color6: 	  #06989A
 URxvt.color7: 	  #D3D7CF
 URxvt.color8: 	  #555753
@@ -39,24 +39,30 @@ URxvt.scrollTtyOutput:   false
 URxvt.scrollWithBuffer:  true
 URxvt.scrollTtyKeypress: true
 
-urxvt*scrollBar:            	false
+urxvt*scrollBar:         	false
 urxvt*visualBell:      		true
 urxvt*cursorBlink:      	true
 urxvt*cursorUnderline:  	true
-urxvt*saveLines:           	2000
+urxvt*saveLines:         	2000
 urxvt*secondaryScroll: 		true
-urxvt*perl-ext-common: 		default,matcher,selection-popup,option-popup,searchable-scrollback<M-s>,readline
-urxvt*urlLauncher:		/usr/bin/firefox
+urxvt*perl-ext-common: 		default,matcher,selection-popup,option-popup,searchable-scrollback<M-s>,readline,font-size
+urxvt*urlLauncher:		    /usr/bin/chromium
 urxvt*matcher.button: 		1
 
+! urxvt-fonsize keybindings
+! see https://github.com/majutsushi/urxvt-font-size
+URxvt.keysym.C-Up:     perl:font-size:increase
+URxvt.keysym.C-Down:   perl:font-size:decrease
+URxvt.keysym.C-S-Up:   perl:font-size:incglobal
+URxvt.keysym.C-S-Down: perl:font-size:decglobal
 
 !!!!!!!!!
 ! emacs !
 !!!!!!!!!
 
-emacs*depth: 32
-emacs*transparent:true
-emacs*shading:35
+emacs*depth:        32
+emacs*transparent:  true
+emacs*shading:      35
 
 
 !!!!!!!!!!!
