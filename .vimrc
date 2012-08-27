@@ -78,14 +78,7 @@ set bs=2
 set background=dark
 set wrapmargin=8
 
-" syntaxic color
-syntax on
-set syntax=on
-
 set ruler
-
-" completion
-filetype  indent plugin on
 
 " matching par
 set  showmatch
@@ -95,4 +88,9 @@ set  cursorline
 
 " CTRL+SPC for completion
 imap  <C-Space> <C-X><C-O>
+
+" =============== Basic closure =======================
+inoremap        (  ()<Left>
+inoremap        {  {}<Left>
+inoremap        [  []<Left>
 
