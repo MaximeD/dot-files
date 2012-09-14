@@ -94,3 +94,11 @@ inoremap        (  ()<Left>
 inoremap        {  {}<Left>
 inoremap        [  []<Left>
 
+
+" =============== wirte shebang on new files ==========
+augroup Shebang
+  autocmd BufNewFile *.rb  0put =\"#!/usr/bin/env ruby\<nl>\<nl>\"|$
+  autocmd BufNewFile *.pl  0put =\"#!/usr/bin/env perl\<nl>use strict;\<nl>use warnings;\<nl>\<nl>\"|$
+  autocmd BufNewFile *.tex 0put =\"\\input{default}\<nl>\<nl>\<nl>\\begin{document}\<nl>\<nl>\\end{document}\"|$
+  autocmd BufNewFile *.\(cc\|hh\) 0put =\"//\<nl>// \".expand(\"<afile>:t\").\" -- \<nl>//\<nl>\"|2|start!
+augroup END
