@@ -2,10 +2,10 @@
 !!  urxvt   !!
 !!!!!!!!!!!!!!
 
-urxvt*font:			       xft:DejaVu Sans Mono:style=Book:pixelsize=15:antialias=true:hinting=true
-urxvt*boldFont:        xft:dejavu Sans Mono:style=Book:pixelsize=15:antialias=true:bold:hinting=true
-urxvt*italicFont:      xft:dejavu Sans Mono:style=Book:pixelsize=15:antialias=true:italic:autohint=true:hinting=true
-urxvt*bolditalicFont:  xft:dejavu Sans Mono:style=Book:pixelsize=15:antialias=true:bold:italic:autohint=true:hinting=true
+urxvt*font:			       xft:DejaVu Sans Mono:style=Book:pixelsize=17:antialias=true:hinting=true
+urxvt*boldFont:        xft:dejavu Sans Mono:style=Book:pixelsize=17:antialias=true:bold:hinting=true
+urxvt*italicFont:      xft:dejavu Sans Mono:style=Book:pixelsize=17:antialias=true:italic:autohint=true:hinting=true
+urxvt*bolditalicFont:  xft:dejavu Sans Mono:style=Book:pixelsize=17:antialias=true:bold:italic:autohint=true:hinting=true
 
 urxvt*background:		  #000000
 urxvt*foreground:		  #ffffff
@@ -46,7 +46,7 @@ urxvt*cursorUnderline:  	true
 urxvt*saveLines:         	2000
 urxvt*secondaryScroll: 		true
 urxvt*perl-ext-common: 		default,matcher,selection-popup,option-popup,searchable-scrollback<M-s>,readline,font-size
-urxvt*urlLauncher:		    /usr/bin/chromium
+urxvt*url-launcher:		    /usr/bin/chromium
 urxvt*matcher.button: 		1
 
 ! urxvt-fonsize keybindings
@@ -55,6 +55,9 @@ URxvt.keysym.C-Up:     perl:font-size:increase
 URxvt.keysym.C-Down:   perl:font-size:decrease
 URxvt.keysym.C-S-Up:   perl:font-size:incglobal
 URxvt.keysym.C-S-Down: perl:font-size:decglobal
+
+
+URxvt.urgentOnBell:  true
 
 !!!!!!!!!
 ! emacs !
