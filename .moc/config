@@ -1,8 +1,7 @@
 # Show file titles (title, author, album) instead of file names.
 ReadTags		= yes
 
-# Répertoire de musique
-# Permet d'y accéder avec la commande "m"
+# Key 'm' is a shortcut to MusicDir
 MusicDir		= "/media/MyBook_1T/Musique"
 
 # How to sort? FileName is the only option for now.
@@ -58,7 +57,7 @@ Prebuffering		= 64
 
 # Jack output settings.
 JackOutLeft		= "alsa_pcm:playback_1"
-JackOutRight		= "alsa_pcm:playback_2"
+JackOutRight	= "alsa_pcm:playback_2"
 
 # OSS output device.
 OSSDevice		= /dev/dsp
