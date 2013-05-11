@@ -54,7 +54,7 @@ Prebuffering		= 64
 # Sound driver - OSS, ALSA, JACK, or null (only for debugging).
 # You can enter more than one driver separated by a comma. The first working
 # driver will be used.
-SoundDriver		= ALSA, OSS, JACK
+#SoundDriver		= ALSA, OSS, JACK
 
 # Jack output settings.
 JackOutLeft		= "alsa_pcm:playback_1"
@@ -67,13 +67,13 @@ OSSDevice		= /dev/dsp
 OSSMixerDevice		= /dev/mixer
 
 # OSS Mixer channel: pcm or master.
-OSSMixerChannel		= pcm
+OSSMixerChannel1		= pcm
 
 # Second OSS Mixer channel: pcm or master.
 OSSMixerChannel2	= master
 
 # ALSA mixer device.
-AlsaMixer 		= PCM
+AlsaMixer1 		= PCM
 
 # Second ALSA mixer device.
 AlsaMixer2		= Master
@@ -140,13 +140,13 @@ UseMmap			= no
 # UTF-8 is not used here and MOC can't guess how tags are encoded. Another
 # solution is using librcc (see the next option). This option is ignored
 # if UseRCC is set to yes.
-#ID3v1TagsEncoding		= WINDOWS-1250
+ID3v1TagsEncoding		= UTF-8
 
 # Use librcc to fix ID3 version 1/1.1 tags encoding.
-#UseRCC				= yes
+UseRCC				= yes
 
 # Use librcc to filenames and directory names encoding.
-#UseRCCForFilesystem			= yes
+UseRCCForFilesystem		= yes
 
 # Remember the playlist after exit?
 SavePlaylist		= yes
@@ -246,7 +246,7 @@ TagsCacheSize		= 256
 #
 # Just one layout, the directory will occupy the whole screen, the playlist
 # will have 1/4 of the screen size and be positioned at lower right corner.
-Layout1 = "directory:0,0,100%,100%"
+#Layout1 = "directory:0,0,100%,100%"
 #Layout2 = ""
 # Layout3 = ""
 #
