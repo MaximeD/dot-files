@@ -1,0 +1,10 @@
+equalizer_next  = +
+go              = l
+go_up           = h
+help            = ?
+menu_down       = j
+menu_up         = k
+pause           = p
+plist_move_down = DOWN
+refresh         = ^r
+toggle_layout   = ^l
