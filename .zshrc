@@ -2,32 +2,20 @@
 ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-# ZSH_THEME="fletcherm"
-ZSH_THEME="kennethreitz"
+ZSH_THEME="max" # custom theme
 
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ls='ls --group-directories-first'
-
-# Set to this to use case-sensitive completion
-# CASE_SENSITIVE="true"
-
-# Comment this out to disable bi-weekly auto-update checks
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment to change how many often would you like to wait before auto-updates occur? (in days)
-# export UPDATE_ZSH_DAYS=13
+alias lltag_rename='lltag --rename "%n. %t"'
+alias bit='git'
+alias bim='vim'
+alias dmesg='dmesg --color'
+# remove local merged branches
+alias prunelocal="git branch --no-color --merged | grep -v '^*' | xargs git branch -d"
+# remove merged branches on origin
+alias pruneorigin="!sh -c 'git branch --no-color -r --merged | grep \"^  origin/\" | grep -v \"/master$\" | sed \"s/origin./:/g\" | xargs git push origin'"
 
 # Uncomment following line if you want to disable autosetting terminal title.
 export DISABLE_AUTO_TITLE="true"
-
-# Uncomment following line if you want red dots to be displayed while waiting for completion
-# COMPLETION_WAITING_DOTS="true"
-
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -36,10 +24,17 @@ plugins=(git zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
+# golang
+export GOPATH="$HOME/code/go"
+export PATH="$PATH:$GOPATH/bin"
+
 # rbenv
 unset RUBYOPT
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
+
+# no more `bundle exec`
+export RUBYGEMS_GEMDEPS=-
 
 # tmuxinator
 [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
@@ -64,4 +59,3 @@ ZSH_HIGHLIGHT_STYLES[single-quoted-argument]=fg=cyan
 ZSH_HIGHLIGHT_STYLES[double-quoted-argument]=fg=cyan
 ZSH_HIGHLIGHT_STYLES[dollar-double-quoted-argument]=fg=cyan
 ZSH_HIGHLIGHT_STYLES[back-double-quoted-argument]=fg=cyan
-
