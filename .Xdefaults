@@ -2,18 +2,19 @@
 !!  urxvt   !!
 !!!!!!!!!!!!!!
 
-urxvt*font:			       xft:DejaVu Sans Mono:style=Book:pixelsize=17:antialias=true:hinting=true
-urxvt*boldFont:        xft:dejavu Sans Mono:style=Book:pixelsize=17:antialias=true:bold:hinting=true
-urxvt*italicFont:      xft:dejavu Sans Mono:style=Book:pixelsize=17:antialias=true:italic:autohint=true:hinting=true
-urxvt*bolditalicFont:  xft:dejavu Sans Mono:style=Book:pixelsize=17:antialias=true:bold:italic:autohint=true:hinting=true
+urxvt*font:	          xft:DejaVu Sans Mono:style=Book:pixelsize=17:antialias=true:hinting=true
+urxvt*boldFont:       xft:dejavu Sans Mono:style=Book:pixelsize=17:antialias=true:bold:hinting=true
+urxvt*italicFont:     xft:dejavu Sans Mono:style=Book:pixelsize=17:antialias=true:italic:autohint=true:hinting=true
+urxvt*bolditalicFont: xft:dejavu Sans Mono:style=Book:pixelsize=17:antialias=true:bold:italic:autohint=true:hinting=true
 
-urxvt*background:		  #000000
-urxvt*foreground:		  #ffffff
-
+urxvt*background:     #000000
+urxvt*foreground:     #ffffff
 urxvt*inheritPixmap:  true
-urxvt*transparent:		true
-urxvt*shading:			  15
-urxvt*tintColor:	    #ffffff
+urxvt*transparent:    true
+urxvt*shading:	      15
+urxvt*tintColor:      #ffffff
+
+URxvt.urgentOnBell:   true
 
 ! Tango like color theme
 URxvt.foreground: #C8C8C8
@@ -49,6 +50,7 @@ urxvt*perl-ext-common: 		default,matcher,selection-popup,option-popup,searchable
 urxvt*url-launcher:		    /usr/bin/chromium
 urxvt*matcher.button: 		1
 
+
 ! urxvt-fonsize keybindings
 ! see https://github.com/majutsushi/urxvt-font-size
 URxvt.keysym.C-Up:     perl:font-size:increase
@@ -57,28 +59,13 @@ URxvt.keysym.C-S-Up:   perl:font-size:incglobal
 URxvt.keysym.C-S-Down: perl:font-size:decglobal
 
 
-URxvt.urgentOnBell:  true
-
-!!!!!!!!!
-! emacs !
-!!!!!!!!!
-
-emacs*depth:        32
-emacs*transparent:  true
-emacs*shading:      35
-
-
 !!!!!!!!!!!
 ! nethack !
 !!!!!!!!!!!
-
 NetHack*font:                   vga
-
 NetHack*background:             black
 NetHack*foreground:             grey
-
 NetHack*map*background:         black
-
 NetHack*map*black:              grey25
 NetHack*map*red:                red3
 NetHack*map*green:              green3
