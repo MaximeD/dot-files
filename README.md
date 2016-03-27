@@ -3,6 +3,6 @@ Should be working with most *nix environment !
 
 # .config
 
-Gentoo 3.18.11-gentoo with Intel(R) Core(TM) i7-2600K CPU.
+Gentoo 4.1.15-gentoo-r1 with Intel(R) Core(TM) i7-2600K CPU.
 
 Docker support.
