@@ -1,7 +1,7 @@
-# coding:utf-8 vim:ft=ruby
+# === EDITOR ===
+Pry.editor = 'vim'
 
-Pry.config.editor = proc { |file, line| "vim +#{line} #{file}" }
-
+# === CUSTOM PROMPT ===
 # wrap ANSI codes so Readline knows where the prompt ends
 def colour(name, text)
   if Pry.color
@@ -11,67 +11,75 @@ def colour(name, text)
   end
 end
 
-# pretty prompt
-Pry.config.prompt = [
-  proc do |object, nest_level, pry|
-    prompt  = colour :yellow, Pry.view_clip(object)
-    prompt += ":#{nest_level}" if nest_level > 0
-    prompt += colour :cyan, ' > '
-  end, proc { |object, nest_level, pry| colour :yellow, '> ' }
+def base_prompt(obj, nest_level, eol_char)
+  ruby_version = colour(:yellow, RUBY_VERSION)
+  obj = colour(:cyan, obj)
+  level = colour(:green, nest_level)
+  eol = colour(:purple, eol_char)
+
+  ruby_version + ' ' + obj + ':' + level + ' ' + eol + ' '
+end
+
+# This prompt shows the ruby version (useful for rbenv)
+Pry.prompt = [
+  proc { |obj, nest_level, _| base_prompt(obj, nest_level, '>') },
+  proc { |obj, nest_level, _| base_prompt(obj, nest_level, '*') }
 ]
 
-# tell Readline when the window resizes
-old_winch = trap 'WINCH' do
-  if `stty size` =~ /\A(\d+) (\d+)\n\z/
-    Readline.set_screen_size $1.to_i, $2.to_i
+# === Listing config ===
+# Better colors - by default the headings for methods are too
+# similar to method name colors leading to a "soup"
+# These colors are optimized for use with Solarized scheme
+# for your terminal
+Pry.config.ls.separator = "\n" # new lines between methods
+Pry.config.ls.heading_color = :magenta
+Pry.config.ls.public_method_color = :green
+Pry.config.ls.protected_method_color = :yellow
+Pry.config.ls.private_method_color = :bright_black
+
+# == PLUGINS ===
+# awesome_print gem: great syntax colorized printing
+# look at ~/.aprc for more settings for awesome_print
+begin
+  require 'awesome_print'
+
+  AwesomePrint.pry!
+
+  # Enable awesome_print for all pry output, and paging
+  Pry.config.print = proc do |output, value|
+    Pry::Helpers::BaseHelpers.stagger_output("=> #{value.ai}", output)
   end
-  old_winch.call unless old_winch.nil?
+
+  # If you want awesome_print without automatic pagination, use the line below
+  # Pry.config.print = proc { |output, value| output.puts value.ai }
+rescue LoadError
+  puts 'gem install awesome_print  # <-- highly recommended'
 end
 
-# use awesome print for output if available
-original_print = Pry.config.print
-Pry.config.print = proc do |output, value|
-  begin
-    require 'awesome_print'
-    value = value.to_a if defined?(ActiveRecord) && value.is_a?(ActiveRecord::Relation)
-    output.puts value.ai
-  rescue LoadError => err
-    original_print.call(output, value)
+# === CONVENIENCE METHODS ===
+# Stolen from https://gist.github.com/807492
+# Use Array.toy or Hash.toy to get an array or hash to play with
+class Array
+  def self.toy(n = 10, &block)
+    block_given? ? Array.new(n, &block) : Array.new(n) { |i| i + 1 }
   end
 end
 
-# startup hooks
-org_logger_active_record = nil
-org_logger_rails = nil
-Pry.hooks.add_hook :before_session, :rails do |output, target, pry|
-  # show ActiveRecord SQL queries in the console
-  if defined? ActiveRecord
-    org_logger_active_record = ActiveRecord::Base.logger
-    ActiveRecord::Base.logger = Logger.new STDOUT
+class Hash
+  def self.toy(n = 10)
+    Hash[Array.toy(n).zip(Array.toy(n) { |c| (96 + (c + 1)).chr })]
   end
+end
 
-  if defined?(Rails) && Rails.env
-    # output all other log info such as deprecation warnings to the console
-    if Rails.respond_to? :logger=
-      org_logger_rails = Rails.logger
-      Rails.logger = Logger.new STDOUT
+# runs benchmark comparing an array of methods
+def benchmark(methods)
+  Benchmark.ips do |x|
+    x.config(time: 5, warmup: 2)
+
+    methods.each do |name, method|
+      x.report(name) { method }
     end
 
-    # load Rails console commands
-    if Rails::VERSION::MAJOR >= 3
-      require 'rails/console/app'
-      require 'rails/console/helpers'
-      if Rails.const_defined? :ConsoleMethods
-        extend Rails::ConsoleMethods
-      end
-    else
-      require 'console_app'
-      require 'console_with_helpers'
-    end
+    x.compare!
   end
-end
-
-Pry.hooks.add_hook :after_session, :rails do |output, target, pry|
-  ActiveRecord::Base.logger = org_logger_active_record if org_logger_active_record
-  Rails.logger = org_logger_rails if org_logger_rails
 end
