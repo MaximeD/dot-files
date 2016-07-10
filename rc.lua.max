@@ -90,6 +90,7 @@ clockicon = wibox.widget.imagebox(beautiful.widget_clock)
 mytextclock = lain.widgets.abase({
   timeout  = 60,
   cmd      = "date +'%A %d %B %R'",
+  followmouse = true,
   settings = function()
     local t_output = ""
     local o_it = string.gmatch(output, "%S+")
@@ -103,9 +104,24 @@ mytextclock = lain.widgets.abase({
 -- Calendar
 lain.widgets.calendar:attach(mytextclock, { font_size = 10 })
 
+-- Weather
+weathericon = wibox.widget.imagebox(beautiful.widget_weather)
+myweather = lain.widgets.weather({
+  city_id = 3021372, -- Dijon, FR
+  lang = "FR",
+  followmouse = true,
+  settings = function()
+    descr = weather_now["weather"][1]["description"]:lower()
+    units = math.floor(weather_now["main"]["temp"])
+    widget:set_markup(markup("#eca4c4", descr .. " - " .. units .. "°C "))
+  end
+})
+
 -- / fs
 fsicon = wibox.widget.imagebox(beautiful.widget_fs)
 fswidget = lain.widgets.fs({
+  followmouse = true,
+  partition = "/home",
   settings  = function()
     widget:set_markup(markup("#80d9d8", fs_now.used .. "% "))
   end
@@ -147,6 +163,13 @@ netdowninfo = wibox.widget.textbox()
 netupicon = wibox.widget.imagebox(beautiful.widget_netup)
 netupinfo = lain.widgets.net({
   settings = function()
+
+    if iface ~= "network off" and
+       string.match(myweather._layout.text, "N/A")
+    then
+        myweather.update()
+    end
+
     widget:set_markup(markup("#e54c62", net_now.sent .. " "))
     netdowninfo:set_markup(markup("#87af5f", net_now.received .. " "))
   end
@@ -265,6 +288,8 @@ for s = 1, screen.count() do
   right_layout:add(cpuwidget)
   right_layout:add(fsicon)
   right_layout:add(fswidget)
+  right_layout:add(weathericon)
+  right_layout:add(myweather)
   right_layout:add(tempicon)
   right_layout:add(tempwidget)
   right_layout:add(clockicon)
@@ -532,28 +557,3 @@ client.connect_signal("focus",
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
 
--- {{{ Arrange signal handler
--- for s = 1, screen.count() do screen[s]:connect_signal("arrange", function ()
---     local clients = awful.client.visible(s)
---     local layout  = awful.layout.getname(awful.layout.get(s))
---
---     if #clients > 0 then -- Fine grained borders and floaters control
---       for _, c in pairs(clients) do -- Floaters always have borders
---         -- No borders with only one humanly visible client
---         if layout == "max" then
---           c.border_width = 0
---         elseif awful.client.floating.get(c) or layout == "floating" then
---           c.border_width = beautiful.border_width
---         elseif #clients == 1 then
---           clients[1].border_width = 0
---           if layout ~= "max" then
---               awful.client.moveresize(0, 0, 2, 0, clients[1])
---           end
---         else
---           c.border_width = beautiful.border_width
---         end
---       end
---     end
---   end)
--- end
--- }}}
