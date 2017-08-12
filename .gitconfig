@@ -1,0 +1,36 @@
+[push]
+  default = current
+[help]
+  autocorrect = 1
+[tag]
+  sort = v:refname
+[alias]
+  br = for-each-ref --sort=-committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) %(color:red)(%(objectname:short))%(color:reset) %(contents:subject) %(color:green)(%(committerdate:relative))%(color:reset) %(color:bold blue)<%(authorname)>%(color:reset)'
+  g = grep --break --heading --line-number
+  latest-release = !sh -c 'git checkout $(git tag | grep -P "\\\\d" | tail -n 1)'
+  lg = log --color --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  since-latest = !sh -c 'git log $(git tag | grep -P "\\\\d" | tail -n 1)..HEAD'
+  sync-master = !sh -c 'git checkout master && git pull && git fetch -p && git branch --no-color --merged | grep -v '^*' | xargs git branch -d'
+  todo = grep -E 'TODO|FIXME'
+[color "grep"]
+  linenumber = yellow bold
+  match = red
+  filename = magenta
+[grep]
+  break = true
+  heading = true
+  lineNumber = true
+[credential]
+  helper = cache
+[core]
+  editor = atom
+[init]
+  templatedir = ~/.git_template
+[rebase]
+  autosquash = true
+[diff]
+  tool = icdiff
+[difftool]
+  prompt = false
+[difftool "icdiff"]
+  cmd = /usr/bin/icdiff --line-numbers $LOCAL $REMOTE
